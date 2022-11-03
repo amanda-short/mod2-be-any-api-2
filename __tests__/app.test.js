@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 const { university } = require('../lib/uni-data.js');
+const { brewery } = require('../lib/beer-data.js');
 
 describe('university routes', () => {
   beforeEach(() => {
@@ -27,6 +28,20 @@ describe('university routes', () => {
       location: 'Eugene Oregon',
     };  
     expect(res.body).toEqual(universityOfOregon);
+  });
+});
+
+describe('brewery routes', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+  
+  it('/brewery should return a list of breweries', async () => {
+    const res = await request(app).get('/brewery');
+    const expected = brewery.map((brew) => {
+      return { id: brew.id, name: brew.name };
+    });
+    expect(res.body).toEqual(expected);
   });
 
   afterAll(() => {
