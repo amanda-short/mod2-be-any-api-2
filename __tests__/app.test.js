@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 const { university } = require('../lib/uni-data.js');
-const { brewery } = require('../lib/beer-data.js');
+// const { brewery } = require('../lib/beer-data.js');
 
 describe('university routes', () => {
   beforeEach(() => {
@@ -31,6 +31,19 @@ describe('university routes', () => {
   });
 });
 
+// describe('brewery routes', () => {
+//   beforeEach(() => {
+//     return setup(pool);
+//   });
+  
+//   it('/brewery should return a list of breweries', async () => {
+//     const res = await request(app).get('/brewery');
+//     const expected = brewery.map((brew) => {
+//       return { id: brew.id, name: brew.name };
+//     });
+//     expect(res.body).toEqual(expected);
+//   });
+
 describe('brewery routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -38,11 +51,61 @@ describe('brewery routes', () => {
   
   it('/brewery should return a list of breweries', async () => {
     const res = await request(app).get('/brewery');
-    const expected = brewery.map((brew) => {
-      return { id: brew.id, name: brew.name };
-    });
-    expect(res.body).toEqual(expected);
+    // const expected = brewery.map((brew) => {
+    //   return { id: brew.id, name: brew.name };
+    // });
+    expect(res.body).toEqual([
+      {
+        id: '1',
+        name: '2 Town Ciderhouse',
+      },
+      {
+        id: '2',
+        name: 'Rogue Nation Brewery and Spirits'
+      },
+      {
+        id: '3',
+        name: 'Deschutes Brewery'
+      },
+      {
+        id: '4',
+        name: 'Arch Rock Brewing Company'
+      },
+      {
+        id: '5',
+        name: 'De Garde Brewing'
+      },
+      {
+        id: '6',
+        name: 'Pelican Brewing'
+      },
+      {
+        id: '7',
+        name: 'Ninkasi Brewing'
+      },
+      {
+        id: '8',
+        name: 'SakeOn'
+      },
+      {
+        id: '9',
+        name: 'Lookingglass Brewery'
+      },
+      {
+        id: '10',
+        name: 'Thunder Island Brewing'
+      },
+      {
+        id: '11',
+        name: 'Uptown Beer Co'
+      },
+      {
+        id: '12',
+        name: 'Boneyard Beer'
+      }
+    ]);
   });
+  
 
   afterAll(() => {
     pool.end();
