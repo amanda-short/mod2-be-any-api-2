@@ -35,7 +35,7 @@ CREATE TABLE beer (
 
 INSERT INTO beer (name, rating, location)
 VALUES 
-('2 Town Ciderhouse', '4', 'Corvallis'),
+('Two Town Ciderhouse', '4', 'Corvallis'),
 ('Rogue Nation Brewery and Spirits', '4', 'Newport'),
 ('Deschutes Brewery', '4', 'Bend'),
 ('Arch Rock Brewing Company', '5', 'Gold Beach'),

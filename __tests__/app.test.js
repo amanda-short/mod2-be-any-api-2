@@ -57,7 +57,7 @@ describe('brewery routes', () => {
     expect(res.body).toEqual([
       {
         id: '1',
-        name: '2 Town Ciderhouse',
+        name: 'Two Town Ciderhouse',
       },
       {
         id: '2',
@@ -105,7 +105,17 @@ describe('brewery routes', () => {
       }
     ]);
   });
-  
+
+  it('/brewery/:id should return brewery detail', async () => {
+    const res = await request(app).get('/brewery/1');
+    const twoTownCiderhouse = {
+      id: '1',
+      name: 'Two Town Ciderhouse',
+      rating: 4,
+      location: 'Corvallis',
+    };  
+    expect(res.body).toEqual(twoTownCiderhouse);
+  });
 
   afterAll(() => {
     pool.end();
